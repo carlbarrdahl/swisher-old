@@ -59,9 +59,7 @@ const Landing = () => (
       </Text>
       <Text className="mb-2">Feel free to contact me at:</Text>
       <Text>
-        <a href="mailto:carl.barrdahl+swisher@gmail.com">
-          carl.barrdahl+swisher@gmail.com
-        </a>
+        <a href="mailto:carl.barrdahl@gmail.com">carl.barrdahl@gmail.com</a>
       </Text>
       <Text>
         <a href="https://www.linkedin.com/in/carlbarrdahl/">
