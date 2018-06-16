@@ -1,0 +1,15 @@
+{
+  "short_name": "Swisher",
+  "name": "Swisher",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./app",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#F8FAFC"
+}
