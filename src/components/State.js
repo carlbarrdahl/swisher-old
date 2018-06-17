@@ -8,7 +8,7 @@ const validations = {
 
 export default class State extends React.Component {
   state = {
-    number: "",
+    number: localStorage.getItem("number") || "",
     amount: "",
     message: ""
   }
@@ -21,6 +21,8 @@ export default class State extends React.Component {
           const { name, value } = e.target
           if (validations[name](value)) {
             this.setState({ [name]: value })
+
+            name === "number" && localStorage.setItem("number", value)
           }
         }
       })
