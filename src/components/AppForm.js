@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import Button from "./Button"
-import { Input, Label } from "./Form"
+import { Input } from "./Form"
 import { Translations } from "../providers/Translations"
 export default ({
   id,
@@ -26,8 +26,8 @@ export default ({
             <Fragment>
               <div className="flex flex-wrap">
                 <div className="w-2/3 px-3 mb-0">
-                  <Label htmlFor="number">{t("Recipient")}</Label>
                   <Input
+                    label={t("Recipient")}
                     name="number"
                     type="tel"
                     placeholder="0700000000"
@@ -41,8 +41,8 @@ export default ({
                   />
                 </div>
                 <div className="w-1/3 px-3">
-                  <Label htmlFor="amount">{t("Amount")}</Label>
                   <Input
+                    label={t("Amount")}
                     name="amount"
                     type="tel"
                     placeholder="10 SEK"
@@ -58,10 +58,13 @@ export default ({
               </div>
               <div className="flex flex-wrap">
                 <div className="w-full px-3">
-                  <Label htmlFor="message">
-                    {t("Message")} {!id && <MessageCount message={message} />}
-                  </Label>
                   <Input
+                    label={
+                      <span>
+                        {t("Message")}{" "}
+                        {!id && <MessageCount message={message} />}
+                      </span>
+                    }
                     name="message"
                     placeholder=""
                     value={message}
@@ -77,21 +80,25 @@ export default ({
           {!decrypted && (
             <div className="flex flex-wrap">
               <div className="w-full px-3">
-                <Label htmlFor="message">
-                  {t("Key")}{" "}
-                  {
-                    <small className={error ? "text-red" : "text-grey-dark"}>
-                      ({error ? (
-                        t("Key incorrect")
-                      ) : id ? (
-                        t("Key info")
-                      ) : (
-                        t("Key hint")
-                      )})
-                    </small>
-                  }
-                </Label>
                 <Input
+                  label={
+                    <span>
+                      {t("Key")}{" "}
+                      {
+                        <small
+                          className={error ? "text-red" : "text-grey-dark"}
+                        >
+                          ({error ? (
+                            t("Key incorrect")
+                          ) : id ? (
+                            t("Key info")
+                          ) : (
+                            t("Key hint")
+                          )})
+                        </small>
+                      }
+                    </span>
+                  }
                   name="pass"
                   placeholder=""
                   value={pass}
