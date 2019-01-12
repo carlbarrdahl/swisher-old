@@ -7,13 +7,15 @@ import registerServiceWorker from "./registerServiceWorker"
 
 import App from "./components/App"
 import Landing from "./components/Landing"
+import Translations from "./providers/Translations"
 
 render(
-  <Router>
-    <Landing path="/" />
-    <App path="/app" />
-  </Router>,
-
+  <Translations>
+    <Router>
+      <Landing path="/" />
+      <App path="/app" />
+    </Router>
+  </Translations>,
   document.getElementById("root")
 )
 
