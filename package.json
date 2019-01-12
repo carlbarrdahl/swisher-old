@@ -1,26 +1,40 @@
 {
   "name": "swisher",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "description": "Create shareable Swish payments, either QR-code or URL (with optional encryption key) to hide sensitive data with AES256 encryption. This allow users to share payment links without exposing phone number or payment details.",
+  "keywords": [
+    "pwa",
+    "crypto"
+  ],
+  "repository": "https://github.com/carlbarrdahl/swisher.git",
+  "homepage": "https://swisher-app.firebaseapp.com",
+  "author": "Carl Barrdahl <carlbarrdahl@gmail.com>",
   "dependencies": {
-    "@reach/router": "^1.1.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "@reach/router": "^1.2.1",
+    "crypto-js": "^3.1.9-1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-qr-svg": "^2.1.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "2.1.3"
   },
   "scripts": {
     "build:css": "postcss src/styles/index.css -o src/index.css",
     "watch:css": "postcss src/styles/index.css -o src/index.css -w",
-    "start": "npm run watch:css & react-scripts start",
+    "start": "npm run watch:css & HTTPS=true react-scripts start",
     "build": "NODE_ENV=production npm run build:css && react-scripts build",
     "deploy": "npm run build && firebase deploy --only hosting",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "autoprefixer": "^8.6.1",
-    "postcss-cli": "^5.0.0",
-    "tailwindcss": "^0.5.3"
-  }
+    "autoprefixer": "^9.4.4",
+    "postcss-cli": "^6.1.1",
+    "tailwindcss": "^0.7.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

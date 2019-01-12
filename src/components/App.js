@@ -1,23 +1,39 @@
-import React from "react"
+import React, { Fragment } from "react"
+import { deserialize, getLink } from "../utils"
 
 import QRCode from "./QRCode"
-import Form from "./Form"
+import AppForm from "./AppForm"
 import Layout from "./Layout"
-import State from "./State"
+import State from "./AppState"
+import Button from "./Button"
+import SharePayment from "./SharePayment"
 
-const App = props => (
-  <Layout>
-    <State>
-      {({ handleChange, ...state }) => {
-        return (
-          <section>
-            <Form {...state} handleChange={handleChange} />
-            {state.number && state.amount && <QRCode {...state} />}
-          </section>
-        )
-      }}
+const App = () => {
+  const { token } = deserialize(global.location.search)
+  return (
+    <State id={token}>
+      {({ handleChange, handleDecrypt, ...state }) => (
+        <Layout>
+          <AppForm
+            {...state}
+            handleChange={handleChange}
+            handleDecrypt={handleDecrypt}
+          />
+          {state.amount &&
+          state.number && (
+            <Fragment>
+              <QRCode {...state} />
+              <SharePayment link={getLink(state)} />
+            </Fragment>
+          )}
+          {state.id && (
+            <a href="/app" className="no-underline mx-3 block">
+              <Button>Skapa ny</Button>
+            </a>
+          )}
+        </Layout>
+      )}
     </State>
-  </Layout>
-)
-
+  )
+}
 export default App

@@ -2,7 +2,7 @@ import React from "react"
 import { QRCode } from "react-qr-svg"
 
 export default ({ number, message, amount }) => (
-  <div className="text-center mb-6">
+  <div className="text-center mb-2">
     <QRCode
       fgColor="#22292F"
       bgColor="#ffffff"
