@@ -53,20 +53,19 @@ export const serialize = obj => {
   return str.join("&")
 }
 
-export const swishLink = ({ amount, message, number }) =>
-  `swish://payment?data=${encodeURIComponent(
-    JSON.stringify({
-      version: 2,
-      payee: {
-        value: number
-      },
-      amount: {
-        value: amount
-      },
-      message: {
-        value: message,
-        editable: false
-      }
-    })
-  )}&callbackurl=${global.location
-    .origin}/app/payment/done&callbackresultparameter=res`
+export const swishLink = payment => {
+  const params = serialize({
+    data: buildSwishPayment(payment),
+    callbackurl: global.location.origin + "/app/payment/done",
+    callbackresultparameter: "res"
+  })
+
+  return `swish://payment?${params}`
+}
+const buildSwishPayment = ({ amount, message, number }) =>
+  JSON.stringify({
+    version: 1,
+    payee: { value: number },
+    amount: { value: amount },
+    message: { value: message, editable: false }
+  })

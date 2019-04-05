@@ -43,8 +43,8 @@ class App extends React.Component {
         {this.state.amount &&
         this.state.number && (
           <Fragment>
-            <QRCode {...this.state} />
             <SharePayment link={getLink(this.state)} />
+            <QRCode {...this.state} />
           </Fragment>
         )}
       </Layout>
