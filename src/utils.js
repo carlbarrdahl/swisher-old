@@ -56,7 +56,7 @@ export const serialize = obj => {
 export const swishLink = ({ amount, message, number }) =>
   `swish://payment?data=${encodeURIComponent(
     JSON.stringify({
-      version: 1,
+      version: 2,
       payee: {
         value: number
       },
@@ -68,5 +68,5 @@ export const swishLink = ({ amount, message, number }) =>
         editable: false
       }
     })
-  )}>&callbackurl=${global.location
+  )}&callbackurl=${global.location
     .origin}/app/payment/done&callbackresultparameter=res`
