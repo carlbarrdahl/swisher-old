@@ -19,7 +19,7 @@ const Header = props => (
         </div>
         <div>
           <Button component={Link} to="/app">
-            Öppna app
+            Öppna
           </Button>
         </div>
       </div>

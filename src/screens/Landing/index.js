@@ -22,10 +22,10 @@ const Text = props => (
 )
 
 const Hero = props => (
-  <div class="flex flex-wrap mb-4 ">
+  <div class="flex flex-wrap mb-4">
     <div class="w-full md:w-1/2">
-      <h1 className="text-5xl mb-4">Länka Swish-betalningar</h1>
-      <h2 className="text-4xl font-light leading-tight text-grey-darker mb-8">
+      <h1 className="text-4xl sm:text-5xl mb-4">Länka Swish-betalningar</h1>
+      <h2 className="text-3xl sm:text-4xl font-light leading-tight text-grey-darker mb-8">
         Skicka dina betalningar snabbt, enkelt och säkert till vänner eller
         kunder.
       </h2>
@@ -58,7 +58,7 @@ const Footer = props => (
   </footer>
 )
 const Landing = () => (
-  <main className="text-grey-darkest">
+  <main className="text-grey-darkest p-4">
     <Header />
     <Section>
       <Hero />
