@@ -22,8 +22,8 @@ const Text = props => (
 )
 
 const Hero = props => (
-  <div class="flex flex-wrap mb-4">
-    <div class="w-full md:w-1/2">
+  <div className="flex flex-wrap mb-4">
+    <div className="w-full md:w-1/2">
       <h1 className="text-4xl sm:text-5xl mb-4">Länka Swish-betalningar</h1>
       <h2 className="text-3xl sm:text-4xl font-light leading-tight text-grey-darker mb-8">
         Skicka dina betalningar snabbt, enkelt och säkert till vänner eller
@@ -36,7 +36,7 @@ const Hero = props => (
         <span className="hidden md:inline">👉</span>
       </p>
     </div>
-    <div class="w-full md:w-1/2">
+    <div className="w-full md:w-1/2">
       <App
         payment={{
           number: "1239000720",
