@@ -25,10 +25,13 @@ const store = {
   }
 }
 class App extends React.Component {
-  state = {
-    number: store.get("number") || "",
-    amount: "",
-    message: ""
+  constructor(props) {
+    super(props)
+    this.state = this.props.payment || {
+      number: store.get("number") || "",
+      amount: "",
+      message: ""
+    }
   }
   handleChange({ target: { name, value } }) {
     if (validations[name] && validations[name](value)) {

@@ -14,7 +14,7 @@ export const getLink = ({ amount, number, message, pass }) => {
     message
   })
 
-  return `${global.location.href}/payment/${encodeURIComponent(
+  return `${global.location.origin}/app/payment/${encodeURIComponent(
     encrypt(qs, pass)
   )}`
 }

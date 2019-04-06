@@ -2,6 +2,7 @@
 
 @tailwind preflight;
 @tailwind utilities;
+@tailwind components;
 
 body {
   font-family: "Rubik", Arial, Helvetica, sans-serif;
@@ -13,7 +14,7 @@ body {
 }
 
 * {
-  /* outline: 1px solid rgba(0, 0, 255, 0.03); */
+  /* outline: 1px solid rgba(0, 0, 255, 0.1); */
 }
 
 img {

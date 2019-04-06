@@ -27,7 +27,7 @@ const locales = {
     "Create new": "Skapa ny",
     "New payment": "Ny betalning",
     "Send payment": "Skicka betalning",
-    "Copy link": "Kopiera betalning",
+    "Copy link": "Kopiera länk",
     Recipient: "Mottagare",
     Amount: "Summa",
     Message: "Meddelande",

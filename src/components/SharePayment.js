@@ -29,9 +29,13 @@ const SharePayment = withTranslations(({ link, t }) => (
       </div>
     )}
     <div className="mb-4">
-      <small className="max-w-xs mt-2">
-        <Input type="text" id="link" value={link} onFocus={copyLink} />
-      </small>
+      <Input
+        type="text"
+        id="link"
+        value={link}
+        onFocus={copyLink}
+        className="text-xs"
+      />
       <Button onClick={copyLink}>{t("Copy link")}</Button>
     </div>
   </div>

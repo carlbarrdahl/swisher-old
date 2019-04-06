@@ -19,6 +19,7 @@ export default withTranslations(
               type="tel"
               placeholder="0700000000"
               value={number}
+              autoFocus={!number}
               readOnly={id}
               required
               minLength="10"
@@ -34,6 +35,7 @@ export default withTranslations(
               type="tel"
               placeholder="10 SEK"
               value={amount}
+              autoFocus={!amount}
               readOnly={id}
               required
               minLength="1"
@@ -54,6 +56,7 @@ export default withTranslations(
               name="message"
               placeholder=""
               value={message}
+              autoFocus={amount && !message}
               readOnly={id}
               onChange={handleChange}
               autoComplete="off"

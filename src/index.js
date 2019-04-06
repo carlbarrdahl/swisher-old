@@ -8,7 +8,7 @@ import registerServiceWorker from "./registerServiceWorker"
 import App from "./components/App"
 import Payment from "./screens/Payment"
 import PaymentDone from "./screens/PaymentDone"
-import Landing from "./components/Landing"
+import Landing from "./screens/Landing"
 
 render(
   <Router>
