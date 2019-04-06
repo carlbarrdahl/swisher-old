@@ -35,7 +35,7 @@ export default withTranslations(
               type="tel"
               placeholder="10 SEK"
               value={amount}
-              autoFocus={!amount}
+              autoFocus={number && !amount}
               readOnly={id}
               required
               minLength="1"
