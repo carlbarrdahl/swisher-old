@@ -12,7 +12,7 @@ const PaymentScreen = withTranslations(({ hash, t, ...props }) => {
   return (
     <Layout>
       <div className="text-lg text-center text-grey-darkest leading-normal">
-        {t("Payment requested")}
+        {t("app.payment.title")}
         <div className="text-2xl">
           <strong>{payment.amount} SEK</strong>
         </div>
@@ -20,14 +20,16 @@ const PaymentScreen = withTranslations(({ hash, t, ...props }) => {
         <p className="mb-2 text-grey-darker">{payment.message}</p>
       </div>
       <QRCode {...payment} />
-      <p className="text-center leading-normal mb-4">{t("QR instructions")}</p>
+      <p className="text-center leading-normal mb-4">
+        {t("app.payment.instructions")}
+      </p>
       <Button
         component="a"
         href={swishLink(payment)}
         variant="primary"
         className="mb-2"
       >
-        {t("Pay")}
+        {t("app.payment.pay")}
       </Button>
     </Layout>
   )

@@ -3,7 +3,8 @@ import cx from "classnames"
 
 const variants = {
   primary: "bg-blue active:bg-blue-light hover:bg-blue-light text-white",
-  default: "border border-grey-darkest text-grey-darkest "
+  default: "border border-grey-darkest text-grey-darkest",
+  ghost: "text-grey-darkest"
 }
 export default ({ component, className, variant, children, ...props }) => {
   return React.createElement(

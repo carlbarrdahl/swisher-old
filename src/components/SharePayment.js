@@ -22,9 +22,9 @@ const SharePayment = withTranslations(({ link, t }) => (
       <div className="mb-2">
         <Button
           variant="primary"
-          onClick={_ => shareLink(link, t("New payment"))}
+          onClick={_ => shareLink(link, t("app.share.title"))}
         >
-          {t("Send payment")}
+          {t("app.share.button")}
         </Button>
       </div>
     )}
@@ -36,7 +36,7 @@ const SharePayment = withTranslations(({ link, t }) => (
         onFocus={copyLink}
         className="text-xs"
       />
-      <Button onClick={copyLink}>{t("Copy link")}</Button>
+      <Button onClick={copyLink}>{t("app.share.copy")}</Button>
     </div>
   </div>
 ))

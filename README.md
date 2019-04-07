@@ -1,9 +1,3 @@
-![Swisher](public/assets/swisher.png)
+# swisher
 
-- Visit create payment
-- Share payment
-- Copy link
-- Visit payment
-- Payment success
-- Payment failure
-- Payment cancel
+- Create and share Swish payments as a link (encrypted to protect your number)

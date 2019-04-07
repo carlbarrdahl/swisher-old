@@ -3,7 +3,7 @@ import { Input } from "./Form"
 import { withTranslations } from "../providers/Translations"
 
 export default withTranslations(
-  ({ id, amount, number, message, handleChange, t }) => {
+  ({ id, amount, number, message, pass, handleChange, t }) => {
     return (
       <form
         className="w-full"
@@ -14,7 +14,7 @@ export default withTranslations(
         <div className="flex flex-wrap">
           <div className="w-2/3 px-3 mb-0">
             <Input
-              label={t("Recipient")}
+              label={t("app.create.recipient")}
               name="number"
               type="tel"
               placeholder="0700000000"
@@ -30,7 +30,7 @@ export default withTranslations(
           </div>
           <div className="w-1/3 px-3">
             <Input
-              label={t("Amount")}
+              label={t("app.create.amount")}
               name="amount"
               type="tel"
               placeholder="10 SEK"
@@ -50,7 +50,8 @@ export default withTranslations(
             <Input
               label={
                 <span>
-                  {t("Message")} {!id && <MessageCount message={message} />}
+                  {t("app.create.message")}{" "}
+                  {!id && <MessageCount message={message} />}
                 </span>
               }
               name="message"
@@ -64,6 +65,30 @@ export default withTranslations(
             />
           </div>
         </div>
+        {false && (
+          <div className="flex flex-wrap">
+            <div className="w-full px-3">
+              <Input
+                label={
+                  <span>
+                    {t("Key")}{" "}
+                    {
+                      <small className={"text-grey-dark"}>
+                        ({id ? t("Key info") : t("Key hint")})
+                      </small>
+                    }
+                  </span>
+                }
+                name="pass"
+                placeholder=""
+                value={pass}
+                onChange={handleChange}
+                autoComplete="off"
+                maxLength="50"
+              />
+            </div>
+          </div>
+        )}
       </form>
     )
   }
