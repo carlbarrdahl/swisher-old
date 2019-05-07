@@ -1,51 +1,24 @@
-import React, { Component, createContext } from "react"
+import React from "react"
+import en from "../locales/en.json"
+import sv from "../locales/sv.json"
 
-const locales = {
-  en: {
-    "Create new": "Create new",
-    "New payment": "New payment",
-    "Send payment": "Send payment",
-    "Copy link": "Copy link",
-    Recipient: "Recipient",
-    Amount: "Amount",
-    Message: "Message",
-    Key: "Key",
-    "Key incorrect": "it seems the key is incorrect",
-    "Key info": "is needed to see payment information",
-    "Key hint": "encrypts data in link to payment",
-    Decrypt: "Decrypt"
-  },
-  sv: {
-    "Create new": "Skapa ny",
-    "New payment": "Ny betalning",
-    "Send payment": "Skicka betalning",
-    "Copy link": "Kopiera betalning",
-    Recipient: "Mottagare",
-    Amount: "Summa",
-    Message: "Meddelande",
-    Key: "Nyckel",
-    "Key incorrect": "det verkar som att nyckeln är fel",
-    "Key info": "krävs för att se betalinformation",
-    "Key hint": "krypterar länk till betalning",
-    Decrypt: "Lås upp"
-  }
-}
-export const Translations = createContext()
+export const withTranslations = Component =>
+  class TranslationsProvider extends React.Component {
+    constructor(props) {
+      super(props)
+      const locale = (navigator.userLanguage || navigator.language)
+        .replace("-", "_")
+      const [ language ] = locale.split("_")
 
-export default class TranslationsProvider extends Component {
-  constructor(props) {
-    super(props)
-    const locale = (navigator.userLanguage || navigator.language)
-      .replace("-", "_")
-    const [ language ] = locale.split("_")
-    const translations = locales[language] || "en"
+      const locales = { en, sv }
+      const translations = locales[language] || "en"
 
-    this.state = {
-      locale,
-      t: key => translations[key] || "NO_KEY"
+      this.state = {
+        locale,
+        t: key => translations[key] || "NO_KEY"
+      }
+    }
+    render() {
+      return <Component {...this.state} {...this.props} />
     }
   }
-  render() {
-    return <Translations.Provider value={this.state} {...this.props} />
-  }
-}

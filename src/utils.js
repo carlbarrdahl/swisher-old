@@ -1,7 +1,10 @@
 import CryptoJS from "crypto-js"
 
-export const encrypt = (str, key) => CryptoJS.AES.encrypt(str, key).toString()
-export const decrypt = (str, key = "") =>
+const DEFAULT_KEY = ""
+export const encrypt = (str, key = DEFAULT_KEY) =>
+  CryptoJS.AES.encrypt(str, key).toString()
+
+export const decrypt = (str, key = DEFAULT_KEY) =>
   CryptoJS.AES.decrypt(str, key).toString(CryptoJS.enc.Utf8)
 
 export const getLink = ({ amount, number, message, pass }) => {
@@ -11,7 +14,7 @@ export const getLink = ({ amount, number, message, pass }) => {
     message
   })
 
-  return `${global.location.href}/?token=${encodeURIComponent(
+  return `${global.location.origin}/app/payment/${encodeURIComponent(
     encrypt(qs, pass)
   )}`
 }
@@ -49,3 +52,20 @@ export const serialize = obj => {
     }
   return str.join("&")
 }
+
+export const swishLink = payment => {
+  const params = serialize({
+    data: buildSwishPayment(payment),
+    callbackurl: global.location.origin + "/app/payment/done",
+    callbackresultparameter: "res"
+  })
+
+  return `swish://payment?${params}`
+}
+const buildSwishPayment = ({ amount, message, number }) =>
+  JSON.stringify({
+    version: 1,
+    payee: { value: number },
+    amount: { value: amount },
+    message: { value: message, editable: false }
+  })

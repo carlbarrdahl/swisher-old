@@ -1,45 +1,58 @@
 import React, { Fragment } from "react"
-import { deserialize, getLink } from "../utils"
+import { getLink } from "../utils"
 import QRCode from "./QRCode"
 import AppForm from "./AppForm"
 import Layout from "./Layout"
-import State from "./AppState"
-import Button from "./Button"
 import SharePayment from "./SharePayment"
-import { Translations } from "../providers/Translations"
 
-const App = () => {
-  const { token } = deserialize(global.location.search)
-  return (
-    <State id={token}>
-      {({ handleChange, handleDecrypt, ...state }) => (
-        <Layout>
-          <AppForm
-            {...state}
-            handleChange={handleChange}
-            handleDecrypt={handleDecrypt}
-          />
-          {state.amount &&
-          state.number && (
-            <Fragment>
-              <QRCode {...state} />
-              <SharePayment link={getLink(state)} />
-            </Fragment>
-          )}
-          {state.id && <CreateNew />}
-        </Layout>
-      )}
-    </State>
-  )
+const validations = {
+  amount: n => !isNaN(n),
+  number: n => true,
+  message: n => true,
+  pass: n => true
 }
 
-const CreateNew = props => (
-  <Translations.Consumer>
-    {({ t }) => (
-      <a href="/app" className="no-underline mx-3 block">
-        <Button>{t("Create new")}</Button>
-      </a>
-    )}
-  </Translations.Consumer>
-)
+const store = {
+  set: (key, value) => {
+    try {
+      localStorage.setItem(key, value)
+    } catch (error) {}
+  },
+  get: key => {
+    try {
+      return localStorage.getItem(key)
+    } catch (error) {}
+  }
+}
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = this.props.payment || {
+      number: store.get("number") || "",
+      amount: "",
+      message: ""
+    }
+  }
+  handleChange({ target: { name, value } }) {
+    if (validations[name] && validations[name](value)) {
+      this.setState({ [name]: value })
+      name === "number" && store.set("number", value)
+    }
+  }
+  render() {
+    return (
+      <Layout>
+        <AppForm {...this.state} handleChange={this.handleChange.bind(this)} />
+        {this.state.amount &&
+        this.state.number && (
+          <Fragment>
+            <SharePayment link={getLink(this.state)} />
+            <QRCode {...this.state} />
+          </Fragment>
+        )}
+      </Layout>
+    )
+  }
+}
+
 export default App

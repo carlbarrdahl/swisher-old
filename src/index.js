@@ -6,16 +6,17 @@ import { Router } from "@reach/router"
 import registerServiceWorker from "./registerServiceWorker"
 
 import App from "./components/App"
-import Landing from "./components/Landing"
-import Translations from "./providers/Translations"
+import Payment from "./screens/Payment"
+import PaymentDone from "./screens/PaymentDone"
+import Landing from "./screens/Landing"
 
 render(
-  <Translations>
-    <Router>
-      <Landing path="/" />
-      <App path="/app" />
-    </Router>
-  </Translations>,
+  <Router>
+    <Landing path="/" />
+    <App path="/app" />
+    <PaymentDone path="/app/payment/done" />
+    <Payment path="/app/payment/:hash" />
+  </Router>,
   document.getElementById("root")
 )
 
