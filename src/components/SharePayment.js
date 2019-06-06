@@ -11,14 +11,16 @@ const copyLink = _ => {
 }
 
 const shareLink = (url, title) =>
-  navigator
+  global.navigator &&
+  global.navigator
     .share({ url, title })
     .then(() => console.log("Successful share"))
     .catch(error => console.log("Error sharing", error))
 
 const SharePayment = withTranslations(({ link, t }) => (
   <div className="w-full px-3">
-    {navigator.share && (
+    {global.navigator &&
+    global.navigator.share && (
       <div className="mb-2">
         <Button
           variant="primary"

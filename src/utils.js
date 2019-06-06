@@ -7,17 +7,15 @@ export const encrypt = (str, key = DEFAULT_KEY) =>
 export const decrypt = (str, key = DEFAULT_KEY) =>
   CryptoJS.AES.decrypt(str, key).toString(CryptoJS.enc.Utf8)
 
+const getOrigin = () => global.location && global.location.origin
+
 export const getLink = ({ amount, number, message, pass = DEFAULT_KEY }) => {
   const qs = serialize({
     amount,
     number,
     message
   })
-  console.log(encrypt(qs, pass))
-
-  return `${global.location.origin}/payment?${encodeURIComponent(
-    encrypt(qs, pass)
-  )}`
+  return `${getOrigin()}/payment?${encodeURIComponent(encrypt(qs, pass))}`
 }
 
 export const formatMessage = ({ amount, number, message }) => `
@@ -57,7 +55,7 @@ export const serialize = obj => {
 export const swishLink = payment => {
   const params = serialize({
     data: buildSwishPayment(payment),
-    callbackurl: global.location.origin + "/app/payment/done",
+    callbackurl: getOrigin() + "/app/payment/done",
     callbackresultparameter: "res"
   })
 
