@@ -4,7 +4,7 @@ import sv from "../locales/sv.json"
 
 export const withTranslations = Component =>
   class TranslationsProvider extends React.Component {
-    state = { locale: "en", t: x => x }
+    state = { locale: "en", t: x => "" }
     componentDidMount() {
       const locale = (navigator.userLanguage || navigator.language)
         .replace("-", "_")
