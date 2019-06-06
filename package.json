@@ -1,42 +1,51 @@
 {
-  "name": "swisher",
-  "version": "0.1.1",
-  "description": "Create shareable Swish payments, either QR-code or URL (with optional encryption key) to hide sensitive data with AES256 encryption. This allow users to share payment links without exposing phone number or payment details.",
-  "keywords": [
-    "pwa",
-    "crypto"
-  ],
-  "repository": "https://github.com/carlbarrdahl/swisher.git",
-  "homepage": "https://swisher-app.firebaseapp.com",
-  "author": "Carl Barrdahl <carlbarrdahl@gmail.com>",
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@reach/router": "^1.2.1",
+    "autoprefixer": "^9.6.0",
     "classnames": "^2.2.6",
     "crypto-js": "^3.1.9-1",
+    "gatsby": "^2.8.4",
+    "gatsby-image": "^2.1.2",
+    "gatsby-plugin-google-analytics": "^2.0.20",
+    "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-offline": "^2.1.1",
+    "gatsby-plugin-postcss": "^2.0.7",
+    "gatsby-plugin-purgecss": "^4.0.0",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-sharp": "^2.1.3",
+    "gatsby-source-filesystem": "^2.0.38",
+    "gatsby-transformer-sharp": "^2.1.21",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-ga": "^2.5.7",
+    "react-helmet": "^5.2.1",
     "react-qr-svg": "^2.2.1",
-    "react-scripts": "2.1.8"
-  },
-  "scripts": {
-    "build:css": "postcss src/styles/index.css -o src/index.css",
-    "watch:css": "postcss src/styles/index.css -o src/index.css -w",
-    "start": "npm run watch:css & HTTPS=true react-scripts start",
-    "build": "NODE_ENV=production npm run build:css && react-scripts build",
-    "deploy": "npm run build && firebase deploy --only hosting",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.5.0",
-    "postcss-cli": "^6.1.2",
     "tailwindcss": "^0.7.4"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "prettier": "^1.17.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
 }

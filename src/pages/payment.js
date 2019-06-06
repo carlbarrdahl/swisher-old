@@ -7,10 +7,12 @@ import QRCode from "../components/QRCode"
 
 import { withTranslations } from "../providers/Translations"
 
-const PaymentScreen = withTranslations(({ hash, t, ...props }) => {
-  const payment = deserialize(decrypt(hash))
+const PaymentScreen = withTranslations(({ location, t, ...props }) => {
+  const hash = location.search.split("?")[1]
+  const payment = deserialize(decrypt(decodeURIComponent(hash)))
+
   return (
-    <Layout>
+    <Layout title="Payment">
       <div className="text-lg text-center text-grey-darkest leading-normal">
         {t("app.payment.title")}
         <div className="text-2xl">

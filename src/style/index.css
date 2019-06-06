@@ -4,18 +4,8 @@
 @tailwind utilities;
 @tailwind components;
 
-body,
-.font-sans {
-  font-family: "Rubik", Arial, Helvetica, sans-serif;
-  /* overflow: hidden; */
-}
-
 [disabled] {
   opacity: 0.5;
-}
-
-* {
-  /* outline: 1px solid rgba(0, 0, 255, 0.1); */
 }
 
 img {

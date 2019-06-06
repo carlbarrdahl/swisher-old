@@ -190,6 +190,7 @@ module.exports = {
 
   fonts: {
     sans: [
+      "Rubik",
       "system-ui",
       "BlinkMacSystemFont",
       "-apple-system",
