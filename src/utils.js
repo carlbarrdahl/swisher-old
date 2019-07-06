@@ -65,6 +65,6 @@ const buildSwishPayment = ({ amount, message, number }) =>
   JSON.stringify({
     version: 1,
     payee: { value: number },
-    amount: { value: amount },
+    amount: { value: +amount },
     message: { value: message, editable: false }
   })
