@@ -34,7 +34,7 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        exclude: [ "" ],
+        // exclude: [ "" ],
         // Enables Google Optimize using your container Id
         // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
         // Enables Google Optimize Experiment ID
