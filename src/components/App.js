@@ -1,9 +1,9 @@
 import React, { Fragment } from "react"
 import { getLink } from "../utils"
-import QRCode from "./QRCode"
-import AppForm from "./AppForm"
-import Layout from "./Layout"
-import SharePayment from "./SharePayment"
+import QRCode from "../components/QRCode"
+import AppForm from "../components/AppForm"
+import Layout from "../components/Layout"
+import SharePayment from "../components/SharePayment"
 
 const validations = {
   amount: n => !isNaN(n),
@@ -41,7 +41,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Layout>
+      <Layout title="Send payment">
         <AppForm {...this.state} handleChange={this.handleChange.bind(this)} />
         {this.state.amount &&
         this.state.number && (

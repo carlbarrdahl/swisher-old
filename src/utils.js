@@ -9,14 +9,22 @@ export const decrypt = (str, key = DEFAULT_KEY) =>
 
 const getOrigin = () => global.location && global.location.origin
 
-export const getLink = ({ amount, number, message, pass = DEFAULT_KEY }) => {
-  const qs = serialize({
-    amount,
-    number,
-    message
-  })
-  return `${getOrigin()}/payment?${encodeURIComponent(encrypt(qs, pass))}`
+export const getLink = ({ amount, number, message, pass = DEFAULT_KEY }) =>
+  `${getOrigin()}/payment?${toURLToken({ amount, number, message })}`
+
+export const fromToken = string => {
+  try {
+    const { amount, number, message } = deserialize(
+      decrypt(decodeURIComponent(string))
+    )
+    return { amount: +amount, number, message }
+  } catch (error) {
+    return {}
+  }
 }
+
+export const toURLToken = payment =>
+  encodeURIComponent(encrypt(serialize(payment)))
 
 export const formatMessage = ({ amount, number, message }) => `
 ${number}, ${(+amount).toLocaleString("sv-SE", {
@@ -38,7 +46,7 @@ export const deserialize = search => {
     const [ key, val ] = hash.split("=")
     return {
       ...acc,
-      [key]: decodeURIComponent(val)
+      [key]: val
     }
   }, {})
 }
@@ -47,14 +55,14 @@ export const serialize = obj => {
   var str = []
   for (var p in obj)
     if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]))
+      str.push(p + "=" + obj[p])
     }
   return str.join("&")
 }
 
 export const swishLink = payment => {
   const params = serialize({
-    data: buildSwishPayment(payment),
+    data: encodeURIComponent(buildSwishPayment(payment)),
     callbackurl: getOrigin() + "/done",
     callbackresultparameter: "res"
   })

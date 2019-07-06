@@ -1,5 +1,5 @@
 import React from "react"
-import { deserialize, decrypt, swishLink } from "../utils"
+import { fromToken, deserialize, decrypt, swishLink } from "../utils"
 
 import Button from "../components/Button"
 import Layout from "../components/Layout"
@@ -8,8 +8,17 @@ import QRCode from "../components/QRCode"
 import { withTranslations } from "../providers/Translations"
 
 const PaymentScreen = withTranslations(({ location, t, ...props }) => {
-  const hash = location.search.split("?")[1]
-  const payment = deserialize(decrypt(decodeURIComponent(hash)))
+  const token = location.search.split("?")[1]
+  const payment = fromToken(token)
+  console.log(
+    payment,
+    swishLink(payment),
+    decrypt(
+      decodeURIComponent(
+        "U2FsdGVkX18%252BA1eaYnE1U6q7U8TPfwaObrT4eFozkICJTooQz49JgL6mwaL7Wc%252F1QO1dZubtswkC5vpQNxJ4GQ%253D%253D"
+      )
+    )
+  )
 
   return (
     <Layout title="Payment">
