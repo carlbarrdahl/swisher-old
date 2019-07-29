@@ -62,7 +62,7 @@ export const serialize = obj => {
 
 export const swishLink = payment => {
   const params = serialize({
-    data: encodeURIComponent(buildSwishPayment(payment)),
+    data: buildSwishPayment(payment),
     callbackurl: getOrigin() + "/done",
     callbackresultparameter: "res"
   })
