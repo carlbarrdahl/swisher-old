@@ -52,8 +52,24 @@ function SEO({ description, lang, meta, title }) {
           content: `website`
         },
         {
+          property: `og:site_name`,
+          content: `Swisher`
+        },
+        {
+          property: `og:url`,
+          content: `https://swisher.carlb.dev`
+        },
+        {
+          property: `og:image`,
+          content: `https://github.com/carlbarrdahl/swisher/raw/master/static/screen.png`
+        },
+        {
           name: `twitter:card`,
           content: `summary`
+        },
+        {
+          name: `twitter:image`,
+          content: `https://github.com/carlbarrdahl/swisher/raw/master/static/screen.png`
         },
         {
           name: `twitter:creator`,
