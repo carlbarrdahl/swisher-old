@@ -29,7 +29,7 @@ export const toURLToken = payment =>
 export const formatMessage = ({ amount, number, message }) => `
 ${number}, ${(+amount).toLocaleString("sv-SE", {
   currency: "SEK",
-  style: "currency"
+  style: "currency",
 })}
 ${message}
 `
@@ -43,10 +43,10 @@ export const deserialize = search => {
     .split("&")
     .filter(q => !!q)
   return hashes.reduce((acc, hash) => {
-    const [ key, val ] = hash.split("=")
+    const [key, val] = hash.split("=")
     return {
       ...acc,
-      [key]: val
+      [key]: val,
     }
   }, {})
 }
@@ -61,18 +61,15 @@ export const serialize = obj => {
 }
 
 export const swishLink = payment => {
-  const params = serialize({
-    data: buildSwishPayment(payment),
-    callbackurl: getOrigin() + "/done",
-    callbackresultparameter: "res"
-  })
-
-  return `swish://payment?${params}`
+  return `swish://payment?data=${encodeURI(
+    buildSwishPayment(payment)
+  )}&callbackurl=${getOrigin() + "/done"}&callbackresultparameter=res`
 }
+
 const buildSwishPayment = ({ amount, message, number }) =>
   JSON.stringify({
     version: 1,
     payee: { value: number },
     amount: { value: +amount },
-    message: { value: message, editable: false }
+    message: { value: message, editable: false },
   })
