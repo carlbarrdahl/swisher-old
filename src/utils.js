@@ -7,7 +7,7 @@ export const encrypt = (str, key = DEFAULT_KEY) =>
 export const decrypt = (str, key = DEFAULT_KEY) =>
   CryptoJS.AES.decrypt(str, key).toString(CryptoJS.enc.Utf8)
 
-const getOrigin = () => global.location && global.location.origin
+const getOrigin = () => "https://swisher.carlb.dev" //global.location && global.location.origin
 
 export const getLink = ({ amount, number, message, pass = DEFAULT_KEY }) =>
   `${getOrigin()}/payment?${toURLToken({ amount, number, message })}`
