@@ -9,6 +9,7 @@
   "app.payment.instructions": "Scan the QR code with your Swish app or click the button below",
   "app.payment.pay": "Pay with Swish",
   "app.payment.new": "New payment",
+  "app.payment.opening": "Opening Swish...",
   "app.success.title": "Payment received!",
   "app.canceled.title": "Payment canceled!",
   "app.failure.title": "Payment failed!",

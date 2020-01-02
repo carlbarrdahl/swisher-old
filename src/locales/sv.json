@@ -9,6 +9,7 @@
   "app.payment.instructions": "Skanna QR-koden med Swish-appen eller klicka på knappen nedan",
   "app.payment.pay": "Betala i Swish",
   "app.payment.new": "Ny betalning",
+  "app.payment.opening": "Öppnar Swish...",
   "app.success.title": "Betalning mottagen!",
   "app.canceled.title": "Betalning avbruten!",
   "app.failure.title": "Betalning misslyckad!",
