@@ -1,5 +1,5 @@
 import React from "react"
-import { QRCode } from "react-qr-svg"
+import QRCode from "qrcode.react"
 
 export default ({ number, message, amount }) => (
   <div className="text-center mb-2">
@@ -7,7 +7,7 @@ export default ({ number, message, amount }) => (
       fgColor="#22292F"
       bgColor="#ffffff"
       level="Q"
-      style={{ maxWidth: 200 }}
+      size={200}
       value={`C${number};${amount};${message};0`}
     />
   </div>
