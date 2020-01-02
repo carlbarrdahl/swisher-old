@@ -7,7 +7,7 @@ export const encrypt = (str, key = DEFAULT_KEY) =>
 export const decrypt = (str, key = DEFAULT_KEY) =>
   CryptoJS.AES.decrypt(str, key).toString(CryptoJS.enc.Utf8)
 
-const getOrigin = () => "https://swisher.carlb.dev" //global.location && global.location.origin
+const getOrigin = () => global.location && global.location.origin
 
 export const getLink = ({ amount, number, message, pass = DEFAULT_KEY }) =>
   `${getOrigin()}/payment?${toURLToken({ amount, number, message })}`
@@ -61,9 +61,9 @@ export const serialize = obj => {
 }
 
 export const swishLink = payment => {
-  return `swish://payment?data=${encodeURI(
+  return `swish://payment?data=${encodeURIComponent(
     buildSwishPayment(payment)
-  )}&callbackresultparameter=res`
+  )}&callbackurl=${getOrigin() + "/done"}&callbackresultparameter=res`
 }
 
 const buildSwishPayment = ({ amount, message, number }) =>

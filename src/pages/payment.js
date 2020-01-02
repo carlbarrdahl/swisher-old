@@ -10,6 +10,9 @@ import { withTranslations } from "../providers/Translations"
 const PaymentScreen = withTranslations(({ location, t, ...props }) => {
   const token = location.search.split("?")[1]
   const payment = fromToken(token)
+  if (!payment.amount) {
+    return null
+  }
   console.log(
     payment,
     swishLink(payment),
