@@ -15,7 +15,9 @@ const PaymentScreen = withTranslations(({ location, t, ...props }) => {
   }
 
   useEffect(() => {
-    window.location.href = swishLink(payment)
+    setTimeout(() => {
+      window.location.replace(swishLink(payment))
+    }, 500)
   }, [])
   return (
     <Layout title="Payment">
